@@ -4,7 +4,7 @@
 * [Overview](#Overview)
 * [Project Plan](#Project-Plan)
 * [Architecture](#Architecture)
-* [Instructions](#Instructions
+* [Instructions](#Instructions)
 * [Enhancements](#Enhancements)
 * [Demo](#Demo)
 * [References](#References)
