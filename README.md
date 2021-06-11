@@ -1,17 +1,31 @@
-# Overview
+# Building a CI/CD Pipeline with Github and Azure Pipelines
+
+## Table of Contents
+* [Overview](#Overview)
+* [Project Plan](#Project-Plan)
+* [Architecture](#Architecture)
+* [Instructions](#Instructions
+* [Enhancements](#Enhancements)
+* [Demo](#Demo)
+* [References](#References)
+
+## Overview
 
 <TODO: complete this with an overview of your project>
 
 ## Project Plan
 <TODO: Project Plan
 
-* A link to a Trello board for the project
-* A link to a spreadsheet that includes the original and final project plan>
+* Tasks for this project were planned with a Trello board, you can check them the following URL: [Link](https://trello.com/b/tc06w54F/udacity-ci-cd-pipelines-azure)
+* A project plan was made with a Google Sheet, this includes the original and the final project plan, you can check them in the following URL: [Link](https://)
+
+## Architecture
+* Architectural Diagram (Shows how key parts of the system work)>
 
 ## Instructions
 
 <TODO:  
-* Architectural Diagram (Shows how key parts of the system work)>
+
 
 <TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
 
@@ -49,3 +63,4 @@ Port: 443
 <TODO: Add link Screencast on YouTube>
 
 
+## References
