@@ -1,3 +1,5 @@
+[![Python application test with Github Actions](https://github.com/georgetegral/udacity-cicd-pipeline-azure/actions/workflows/pythonapp.yml/badge.svg)](https://github.com/georgetegral/udacity-cicd-pipeline-azure/actions/workflows/pythonapp.yml)
+
 # Building a CI/CD Pipeline with Github and Azure Pipelines
 
 ## Table of Contents
