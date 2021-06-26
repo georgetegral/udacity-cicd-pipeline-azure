@@ -14,13 +14,13 @@
 <TODO: complete this with an overview of your project>
 
 ## Project Plan
-<TODO: Project Plan
+This project followed the Agile Project Management Process. The planning is divided between a Trello board and a spreadsheet explaining the plan followed for the project.
 
 * Tasks for this project were planned with a Trello board, you can check them the following URL: [Link](https://trello.com/b/tc06w54F/udacity-ci-cd-pipelines-azure)
-* A project plan was made with a Google Sheet, this includes the original and the final project plan, you can check them in the following URL: [Link](https://)
+* A project plan was made with a Google Sheet, you can check it in the following URL: [Link](https://docs.google.com/spreadsheets/d/1e66Pa2Z3KnZdFRo2v-h5joDtRpxOj-HCT_1vKzOCET8/edit?usp=sharing)
 
 ## Architecture
-* Architectural Diagram (Shows how key parts of the system work)>
+This is the Architectural Diagram for the project
 
 ## Instructions
 
