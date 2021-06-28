@@ -11,7 +11,9 @@
     * [Configure GitHub Actions (Optional)](#configure-github-actions-optional)
     * [Deploy the app into an Azure App Service](#Deploy-the-app-into-an-Azure-App-Service)
     * [Configure Azure Pipelines](#Configure-Azure-Pipelines)
-* [Enhancements](#Enhancements)
+    * [Logging](#Logging)
+    * [Load Testing](#Load-Testing)
+* [Future Improvements](#Future-Improvements)
 * [Demo](#Demo)
 * [References](#References)
 
@@ -180,42 +182,98 @@ We will follow the following steps to configure our Pipeline:
 
 ![DevOps Configure Pipeline 5](images/devops-configure-pipeline-5.png)
 
+7. We can see the process in which our pipeline runs, in this case it took around 7 minutes, but the pipeline ran successfully.
 
-<TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
+![DevOps Run Pipeline](images/devops-run-pipeline.png)
 
-* Project running on Azure App Service
+### Logging
 
-* Project cloned into Azure Cloud Shell
+Now that the Pipeline is working and the app is deployed, we can use logs streaming and make a request to verify everything is working as expected.
 
-* Passing tests that are displayed after running the `make all` command from the `Makefile`
+To run logs we can use the following command:
 
-* Output of a test run
-
-* Successful deploy of the project in Azure Pipelines.  [Note the official documentation should be referred to and double checked as you setup CI/CD](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
-
-* Running Azure App Service from Azure Pipelines automatic deployment
-
-* Successful prediction from deployed flask app in Azure Cloud Shell.  [Use this file as a template for the deployed prediction](https://GitHub.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/blob/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn/make_predict_azure_app.sh).
-The output should look similar to this:
-
-```bash
-udacity@Azure:~$ ./make_predict_azure_app.sh
-Port: 443
-{"prediction":[20.35373177134412]}
+```Bash
+az webapp log tail --resource-group jorgerene__rg_Linux_centralus -n udacityflaskml
 ```
 
-* Output of streamed log files from deployed application
+![Cloud Logs](images/cloud-logs.png)
 
-> 
+And we can make a prediction with the following command:
 
-## Enhancements
+```Bash
+sh make_predict_azure_app.sh
+```
 
-<TODO: A short description of how to improve the project in the future>
+We can verify the service is still serving successful requests
+
+![Second Request](images/second-run.png)
+
+### Load Testing
+
+For Load Testing we can use ```Locust``` to load test our application.
+
+To install Locust run the following command:
+
+```Python
+pip install locust
+```
+
+We now have to create a locustfile, this is available in the ```locustfile.py```, there we can check the configuration used.
+
+Start Locust:
+
+```Python
+locust
+```
+
+![Locust CLI](images/locust-1.png)
+
+In our terminal the Locust URL is available, we can access the Locust UI from our browser
+
+![Locust UI](images/locust-2.png)
+
+We will put the Number of users to 10, and the spawn rate to 1. To start the load test we can click on ```Start swarming```
+
+![Locust UI Test](images/locust-3.png)
+
+We get 0% failures, this is because when we specified the body for the tests to the ```/predict``` endpoint, we can also check the results Locust gives in the terminal
+
+```Bash
+[2021-06-28 00:15:36,908] Jorges-MacBook-Pro.local/INFO/locust.main: Starting web interface at http://0.0.0.0:8089 (accepting connections from all network interfaces)
+[2021-06-28 00:15:36,917] Jorges-MacBook-Pro.local/INFO/locust.main: Starting Locust 1.6.0
+[2021-06-28 00:15:42,535] Jorges-MacBook-Pro.local/INFO/locust.runners: Spawning 10 users at the rate 1 users/s (0 users already running)...
+[2021-06-28 00:15:51,557] Jorges-MacBook-Pro.local/INFO/locust.runners: All users spawned: WebsiteTest: 10 (10 total running)
+[2021-06-28 00:16:04,571] Jorges-MacBook-Pro.local/INFO/locust.runners: Stopping 10 users
+[2021-06-28 00:16:04,574] Jorges-MacBook-Pro.local/INFO/locust.runners: 10 Users have been stopped, 0 still running
+KeyboardInterrupt
+2021-06-28T05:16:32Z
+[2021-06-28 00:16:32,418] Jorges-MacBook-Pro.local/INFO/locust.main: Running teardowns...
+[2021-06-28 00:16:32,418] Jorges-MacBook-Pro.local/INFO/locust.main: Shutting down (exit code 0), bye.
+[2021-06-28 00:16:32,418] Jorges-MacBook-Pro.local/INFO/locust.main: Cleaning up runner...
+ Name                                                          # reqs      # fails  |     Avg     Min     Max  Median  |   req/s failures/s
+--------------------------------------------------------------------------------------------------------------------------------------------
+ GET /                                                             51     0(0.00%)  |     144      94     627     100  |    2.34    0.00
+ POST /predict                                                     57     0(0.00%)  |     214     163     511     180  |    2.61    0.00
+--------------------------------------------------------------------------------------------------------------------------------------------
+ Aggregated                                                       108     0(0.00%)  |     181      94     627     170  |    4.95    0.00
+
+Response time percentiles (approximated)
+ Type     Name                                                              50%    66%    75%    80%    90%    95%    98%    99%  99.9% 99.99%   100% # reqs
+--------|------------------------------------------------------------|---------|------|------|------|------|------|------|------|------|------|------|------|
+ GET      /                                                                 100    100    110    140    190    420    490    630    630    630    630     51
+ POST     /predict                                                          180    200    210    210    300    480    490    510    510    510    510     57
+--------|------------------------------------------------------------|---------|------|------|------|------|------|------|------|------|------|------|------|
+ None     Aggregated                                                        170    180    190    200    300    470    490    510    630    630    630    108
+```
+
+## Future improvements
+
+* We could divide the repository between different branches, so that different branches are deployed to different App Services.
+* We can create another version of the project where we only use Github Actions instead of Azure Pipelines.
 
 ## Demo 
 
-<TODO: Add link Screencast on YouTube>
-
+In the following URL we can see a screencast with a demonstration of the work done. 
 
 ## References
 - [Azure Pipelines documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops)

@@ -7,3 +7,6 @@ python app.py
 bash ./make_prediction.sh
 az webapp up -n udacityflaskml
 sh make_predict_azure_app.sh
+az webapp log tail --resource-group jorgerene__rg_Linux_centralus -n udacityflaskml
+pip install locust
+locust
