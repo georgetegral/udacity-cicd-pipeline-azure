@@ -236,7 +236,7 @@ We will put the Number of users to 10, and the spawn rate to 1. To start the loa
 
 ![Locust UI Test](images/locust-3.png)
 
-We get 0% failures, this is because when we specified the body for the tests to the ```/predict``` endpoint, we can also check the results Locust gives in the terminal
+We get 0% failures, this is because we specified the body for the tests to the ```/predict``` endpoint, we can also check the results Locust gives in the terminal
 
 ```Bash
 [2021-06-28 00:15:36,908] Jorges-MacBook-Pro.local/INFO/locust.main: Starting web interface at http://0.0.0.0:8089 (accepting connections from all network interfaces)
