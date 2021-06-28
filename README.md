@@ -142,6 +142,43 @@ We can check the service running in the Azure Portal
 
 Please refer to the official Azure Pipelines documentation for a more in-depth explanation in the following URL: [Link](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops)
 
+We will visit our Azure DevOps organization and create a new private project, in our case we already have a project named 'Flask-ML-Deploy' but it was important to show the screenshot for creating a new project.
+
+![DevOps New Project](images/devops-new-project.png)
+
+We will select the Flask-ML-Deploy project, and then go to the Pipelines section.
+
+![DevOps Project](images/devops-project.png)
+
+We will follow the following steps to configure our Pipeline:
+
+1. In Connect, select GitHub.
+
+![DevOps Connect](images/devops-connect.png)
+
+2. In Select, select the repository, in our case it will be udacity-cicd-pipeline-azure.
+
+![DevOps Repositories](images/devops-repos.png)
+
+3. In Configure, select ```Python to Linux Web App on Azure```.
+
+![DevOps Configure Pipeline 1](images/devops-configure-pipeline-1.png)
+
+4. In the menu that appears, select the Azure Subscription.
+
+![DevOps Configure Pipeline 2](images/devops-configure-pipeline-2.png)
+
+4. Select the Web App, in our case we will use ```udacityflaskml```.
+
+![DevOps Configure Pipeline 3](images/devops-configure-pipeline-3.png)
+
+5. In Review we can check the configuration that will be used, in our case we will use commits to ```master``` as our trigger, so we can leave our file as it is. Click on ```Save and run```
+
+![DevOps Configure Pipeline 4](images/devops-configure-pipeline-4.png)
+
+6. In the Save and run menu we can just leave the Commit message as is and finally hit ```Save and run``` at the bottom of the menu, when we do that we just have to wait some minutes for our pipeline to execute.
+
+![DevOps Configure Pipeline 5](images/devops-configure-pipeline-5.png)
 
 
 <TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
@@ -183,3 +220,4 @@ Port: 443
 ## References
 - [Azure Pipelines documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops)
 - [Udacity Starter Files](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/tree/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn)
+- [Locust Load Testing Tool](https://locust.io/)
