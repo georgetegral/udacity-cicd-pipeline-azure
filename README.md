@@ -8,7 +8,9 @@
 * [Architecture](#Architecture)
 * [Instructions](#Instructions)
     * [Deploy the app in Azure Cloud Shell](#Deploy-the-app-in-Azure-Cloud-Shell)
-    * [Configure GitHub Actions (Optional)](#Configure-GitHub-Actions-(Optional))
+    * [Configure GitHub Actions (Optional)](#configure-github-actions-optional)
+    * [Deploy the app into an Azure App Service](#Deploy-the-app-into-an-Azure-App-Service)
+    * [Configure Azure Pipelines](#Configure-Azure-Pipelines)
 * [Enhancements](#Enhancements)
 * [Demo](#Demo)
 * [References](#References)
@@ -110,7 +112,35 @@ We can set up Github Actions to build the project whenever changes are pushed in
 
 ![GitHub Workflows](images/github-workflows.png)
 
+5. We can add a badge to represent our build status by clicking the button with the 3 dots, and then clicking 'Create status badge'. This we will copy and paste at the start of our ```README.md``` file
+
+![GitHub Actions Badge](images/github-actions-badge.png)
+
 ### Deploy the app into an Azure App Service
+
+The next step is to deploy the app into an Azure App Service. We can deploy it using the Azure Portal, but we will do it using the CLI. In this App Service we will later configure our Pipeline.
+
+```Bash
+az webapp up -n udacityflaskml
+```
+
+![CLI Deploy](images/cli-deploy-1.png)
+
+After deploying, we should wait for a few minutes and then we can test our endpoint with the ```make_predict_azure_app.sh```, just be sure to change the url to be the correct one for your service.
+
+```Bash
+sh make_predict_azure_app.sh
+```
+
+![Correct Prediction](images/correct-prediction.png)
+
+We can check the service running in the Azure Portal
+
+![App Service Azure Portal](images/app-service-azure-portal.png)
+
+### Configure Azure Pipelines
+
+Please refer to the official Azure Pipelines documentation for a more in-depth explanation in the following URL: [Link](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops)
 
 
 
@@ -151,3 +181,5 @@ Port: 443
 
 
 ## References
+- [Azure Pipelines documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops)
+- [Udacity Starter Files](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/tree/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn)
